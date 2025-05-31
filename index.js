@@ -1,7 +1,6 @@
 const express = require('express');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
-const puppeteer = require('puppeteer');
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -50,15 +49,16 @@ const client = new Client({
     }),
     puppeteer: {
         headless: true,
+        executablePath: process.env.CHROME_BIN || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
             '--disable-accelerated-2d-canvas',
             '--no-first-run',
-            '--disable-gpu',
             '--no-zygote',
             '--single-process',
+            '--disable-gpu',
             '--disable-extensions',
             '--disable-sync',
             '--disable-translate',
@@ -82,11 +82,7 @@ const client = new Client({
             '--no-experiments',
             '--no-pings',
             '--password-store=basic'
-        ],
-        ignoreHTTPSErrors: true,
-        browserWSEndpoint: null,
-        product: 'chrome',
-        browserRevision: null
+        ]
     }
 });
 
