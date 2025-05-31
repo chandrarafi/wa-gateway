@@ -1,0 +1,17 @@
+{
+  "name": "wagetway",
+  "version": "1.0.0",
+  "description": "WhatsApp Gateway menggunakan whatsapp-web.js dan Express",
+  "license": "ISC",
+  "author": "Chandra",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "qrcode": "^1.5.3",
+    "whatsapp-web.js": "^1.23.0"
+  }
+}
