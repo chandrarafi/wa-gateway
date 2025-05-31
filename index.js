@@ -1,6 +1,7 @@
 const express = require('express');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
+const puppeteer = require('puppeteer');
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -55,24 +56,37 @@ const client = new Client({
             '--disable-dev-shm-usage',
             '--disable-accelerated-2d-canvas',
             '--no-first-run',
-            '--no-zygote',
             '--disable-gpu',
-            '--dns-prefetch-disable',
+            '--no-zygote',
+            '--single-process',
             '--disable-extensions',
-            '--disable-default-apps',
             '--disable-sync',
-            '--no-default-browser-check',
-            '--use-fake-ui-for-media-stream',
-            '--use-fake-device-for-media-stream',
             '--disable-translate',
+            '--disable-background-networking',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-breakpad',
+            '--disable-client-side-phishing-detection',
+            '--disable-component-extensions-with-background-pages',
+            '--disable-default-apps',
+            '--disable-dev-shm-usage',
+            '--disable-features=Translate,BackForwardCache,AcceptCHFrame,MediaRouter,OptimizationHints',
+            '--disable-hang-monitor',
+            '--disable-ipc-flooding-protection',
+            '--disable-popup-blocking',
+            '--disable-prompt-on-repost',
+            '--disable-renderer-backgrounding',
             '--disable-web-security',
             '--ignore-certificate-errors',
-            '--ignore-certificate-errors-spki-list',
-            '--allow-running-insecure-content'
+            '--no-default-browser-check',
+            '--no-experiments',
+            '--no-pings',
+            '--password-store=basic'
         ],
         ignoreHTTPSErrors: true,
-        defaultViewport: null,
-        executablePath: process.env.CHROME_BIN || null
+        browserWSEndpoint: null,
+        product: 'chrome',
+        browserRevision: null
     }
 });
 
